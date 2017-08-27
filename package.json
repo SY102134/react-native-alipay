@@ -1,8 +1,8 @@
 {
-  "name": "@cross2d/react-native-alipay",
-  "author": "tdzl2003",
+  "name": "react-native-alipay",
+  "author": "SY102134",
   "dependencies": {},
-  "description": "支付宝功能接入",
+  "description": "react native 支付宝App支付集成",
   "devDependencies": {},
   "directories": {},
   "keywords": [
@@ -23,13 +23,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "release":"npm publish --access public"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/colin3dmax/react-native-alipay.git"
-  },
-  "bugs": {
-    "url": "https://github.com/colin3dmax/react-native-alipay/issues"
-  },
-  "homepage": "https://github.com/colin3dmax/react-native-alipay#readme"
+    "url": "git+https://github.com/SY102134/react-native-alipay.git"
+  }
 }
