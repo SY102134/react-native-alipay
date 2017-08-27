@@ -9,20 +9,9 @@ npm install -g rnpm
 推荐通过npm安装,譬如解压本文件夹到`../react-native-alipay`,则可以在项目文件下运行
 
 ```
-npm install react-native-alipay
-rnpm link react-native-alipay
+npm install git+https://github.com/SY102134/react-native-alipay.git --save
+react-native link react-native-alipay
 ```
-
-此时应看到输出
-
-```
-rnpm-link info Linking react-native-alipay android dependency
-rnpm-link info Android module react-native-alipay has been successfully linked
-rnpm-link info Linking react-native-alipay ios dependency
-rnpm-link info iOS module react-native-alipay has been successfully linked
-```
-
-为成功
 
 Android: 添加混淆规则:
 
@@ -35,6 +24,19 @@ Android: 添加混淆规则:
 -keep class com.alipay.android.app.IRemoteServiceCallback$Stub{*;}
 -keep class com.alipay.sdk.app.PayTask{ public *;}
 -keep class com.alipay.sdk.app.AuthTask{ public *;}
+-keep class com.alipay.sdk.app.H5PayCallback {
+    <fields>;
+    <methods>;
+}
+-keep class com.alipay.android.phone.mrpc.core.** { *; }
+-keep class com.alipay.apmobilesecuritysdk.** { *; }
+-keep class com.alipay.mobile.framework.service.annotation.** { *; }
+-keep class com.alipay.mobilesecuritysdk.face.** { *; }
+-keep class com.alipay.tscenter.biz.rpc.** { *; }
+-keep class org.json.alipay.** { *; }
+-keep class com.alipay.tscenter.** { *; }
+-keep class com.ta.utdid2.** { *;}
+-keep class com.ut.device.** { *;}
 ```
 
 iOS: 添加其它依赖库
@@ -141,12 +143,12 @@ identifier填写alipay,URL Schemas填写一个不易冲突的,包含应用标识
 
 ```
 import {Alert} from 'react-native';
-import {pay} from 'react-native-alipay';
+import Alipay from 'react-native-alipay';
 import {post} from '../api.js';
 
 async function doPay() {
     const orderInfo = await post('/createOrder');
-    const result = await pay(orderInfo, true);
+    const result = await Alipay.pay(orderInfo, true);
     if (result.resultStatus === '9000') {
         Alert.alert('提示', '支付成功');
     } else if (result.resultStatus === '8000') {
